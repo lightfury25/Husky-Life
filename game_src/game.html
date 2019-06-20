@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Husky Life</title>
+    <link href="assets/logo.png" rel="icon">
+    <script src="script.js"></script>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script>
+      var camera = document.querySelector('#camera');
+      var cameralimit = "3500 24 0" || "-3500 24 0" || "0 24 3500" || "0 24 -3500";
+      var camerapos = console.log(camera.querySelector('[position]'));
+      if (camerapos >= cameralimit) {
+        camerapos = "0 24 0";
+      }
+    </script>
+  </head>
+  <body>
+    <a-scene loading-screen="dotsColor: lightblue; background: black">
+      <a-assets>
+        <a-asset-item id="groundModel" src="assets/ground.obj"></a-asset-item>
+        <img id="dirtTexture" src="assets/dirt.jpg">
+        <img id="skyImg" src="assets/forest.jpg">
+      </a-assets>
+      <a-entity position="0 0 0" rotation="0 0 0" scale="3500 12 3500" obj-model="#groundModel" material="#dirtTexture"></a-entity>
+      <a-sky src="#skyImg"></a-sky>
+      <a-sound src="src: url(http://soundimage.org/wp-content/uploads/2014/04/Fantascape.mp3)" autoplay="true" loop="true" scale="3500 1 3500" position="0 13 0"></a-sound>
+      <a-camera id="camera" position="0 24 0" wasd-controls-enabled="true" look-controls-enabled="true"></a-camera>
+    </a-scene>
+  </body>
+</html>
